@@ -12,7 +12,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Stage 2: Create the final image
-FROM eclipse-temurin:21-jdk-slim
+FROM eclipse-temurin:21  # Use the full JDK image for the final runtime
 
 # Set the working directory
 WORKDIR /app
