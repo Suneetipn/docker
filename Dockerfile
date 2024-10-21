@@ -1,6 +1,8 @@
 # Stage 1: Build the application
 FROM openjdk:21-jdk-slim AS build
 
+RUN dnf update && dnf install maven
+
 # Set the working directory
 WORKDIR /app
 
