@@ -1,5 +1,7 @@
 # Stage 1: Build the application
-FROM maven:eclipse-temurin AS build
+FROM eclipse-temurin:21-jdk AS build
+
+RUN apt-get update && apt-get install -y maven git && apt-get clean
 
 # Set the working directory
 WORKDIR /app
@@ -12,7 +14,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Stage 2: Create the final image
-FROM eclipse-temurin:21  # Use the full JDK image for the final runtime
+FROM eclipse-temurin:21-jre  
 
 # Set the working directory
 WORKDIR /app
